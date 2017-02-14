@@ -1,5 +1,5 @@
 FROM ubuntu:trusty
-RUN apt-get update && apt-get install -y djbdns runit wget
+RUN apt-get update && apt-get install -y djbdns wget
 
 ADD update-data.sh /etc/service/update-data/run
 ADD tinydns-run.sh /etc/service/tinydns/run
@@ -11,4 +11,4 @@ RUN mkdir -p $ROOT
 EXPOSE 53
 EXPOSE 53/udp
 
-CMD ["runsvdir", "/etc/service"]
+CMD ["svscan", "/etc/service"]
